@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 import HtmlPage from './pages/HtmlPage';
@@ -26,9 +26,9 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+    <HashRouter>
       <OrbBackground />
       <AnimatedRoutes />
-    </BrowserRouter>
+    </HashRouter>
   );
 }

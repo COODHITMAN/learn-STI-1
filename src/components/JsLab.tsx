@@ -14,8 +14,8 @@ export default function JsLab({ outId, initialCode, isBox = false }: Props) {
     if (!previewRef.current) return;
     previewRef.current.innerHTML = '';
     try {
-      // eslint-disable-next-line no-eval
-      eval(code);
+      const fn = new Function(code);
+      fn();
     } catch (e) {
       if (previewRef.current) {
         previewRef.current.textContent = '❌ Erreur : ' + (e as Error).message;

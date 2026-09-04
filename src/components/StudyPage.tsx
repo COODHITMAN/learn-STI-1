@@ -33,7 +33,18 @@ export default function StudyPage({ accent, glow, badge, title, subtitle, toc, s
         <p>{subtitle}</p>
       </header>
       <nav className="sticky-nav">
-        {toc.map((item) => <a key={item.id} href={`#${item.id}`}>{item.label}</a>)}
+        {toc.map((item) => (
+          <button
+            key={item.id}
+            className="nav-link-btn"
+            onClick={() => {
+              const el = document.getElementById(item.id);
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
+            {item.label}
+          </button>
+        ))}
       </nav>
       <main className="page-container">
         {sections.map((section) => (

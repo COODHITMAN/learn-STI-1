@@ -27,7 +27,11 @@ export default function StudyPage({ accent, glow, badge, title, subtitle, toc, s
   return (
     <PageLayout accent={accent} glow={glow}>
       <header className="subject-header" style={{ '--subject-accent': accent } as React.CSSProperties}>
-        <Link to="/" className="back-home">STI Learning</Link>
+        <div className="subject-header-top">
+          <Link to="/" className="back-home">STI Learning</Link>
+          <span className="header-divider" aria-hidden="true" />
+          <span className="header-context">Study space</span>
+        </div>
         <span className="subject-badge">{badge}</span>
         <h1>{title}</h1>
         <p>{subtitle}</p>

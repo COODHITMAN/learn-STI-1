@@ -12,14 +12,22 @@ export default function JsLab({ outId, initialCode, isBox = false }: Props) {
 
   const run = () => {
     if (!previewRef.current) return;
-    previewRef.current.innerHTML = '';
+    const preview = previewRef.current;
+    preview.innerHTML = '';
+    const log = (...args: unknown[]) => {
+      const line = document.createElement('div');
+      line.textContent = args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ');
+      preview.appendChild(line);
+    };
+    const sandboxConsole = { log, error: log, warn: log, info: log };
     try {
-      const fn = new Function(code);
-      fn();
+      const fn = new Function('console', 'output', code);
+      fn(sandboxConsole, preview);
     } catch (e) {
-      if (previewRef.current) {
-        previewRef.current.textContent = '❌ Erreur : ' + (e as Error).message;
-      }
+      const errLine = document.createElement('div');
+      errLine.textContent = '❌ Erreur : ' + (e as Error).message;
+      errLine.style.color = '#ef9a9a';
+      preview.appendChild(errLine);
     }
   };
 

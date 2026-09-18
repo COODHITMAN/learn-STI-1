@@ -107,7 +107,7 @@ body {
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
@@ -149,7 +149,7 @@ body {
   border-radius: 99px;
   border: 1px solid var(--glass-border);
   color: var(--text-secondary);
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   white-space: nowrap;
   background: transparent;
   cursor: pointer;
@@ -489,7 +489,7 @@ code {
   font-weight: 600;
   font-size: 0.9rem;
   font-family: var(--font);
-  transition: all 0.25s ease;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
   cursor: pointer;
 }
 
@@ -561,13 +561,12 @@ code {
 .hero-section::before {
   content: '';
   position: absolute;
-  width: 560px;
-  height: 280px;
+  width: 600px;
+  height: 300px;
   left: 50%;
   top: 5px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse, rgba(0,229,163,.16), transparent 68%);
-  filter: blur(14px);
+  background: radial-gradient(ellipse, rgba(0,229,163,.18), transparent 72%);
   pointer-events: none;
 }
 
@@ -603,7 +602,7 @@ code {
 .subject-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
 .subject-card { position: relative; display: block; min-height: 252px; padding: 22px 18px; overflow: hidden; text-decoration: none; color: var(--text-primary); background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,.05); transition: transform .28s ease, border-color .28s ease, background .28s ease; }
 .subject-card:hover { transform: translateY(-8px); border-color: var(--subject-accent); background: var(--glass-hover-bg); }
-.subject-glow { position: absolute; width: 160px; height: 160px; top: -65px; right: -60px; background: var(--subject-accent); opacity: .13; filter: blur(38px); border-radius: 50%; transition: opacity .3s; }
+.subject-glow { position: absolute; width: 220px; height: 220px; top: -85px; right: -80px; background: radial-gradient(circle, var(--subject-accent) 0%, transparent 70%); opacity: .18; border-radius: 50%; transition: opacity .3s; }
 .subject-card:hover .subject-glow { opacity: .28; }
 .subject-icon { position: relative; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; color: var(--subject-accent); border: 1px solid color-mix(in srgb, var(--subject-accent) 45%, transparent); background: color-mix(in srgb, var(--subject-accent) 12%, transparent); font-family: var(--font-mono); font-weight: 800; font-size: .86rem; margin-bottom: 22px; }
 .subject-meta { color: var(--subject-accent); text-transform: uppercase; font-size: .65rem; font-weight: 700; letter-spacing: 1.4px; }

@@ -13,18 +13,20 @@ export default function AboutPage() {
           transition={{ duration: 0.45 }}
         >
           <Link to="/" className="about-back">← STI Learning</Link>
+          <img
+            className="about-photo"
+            src="/799200068_1107396998468723_3468948674525301521_n.jpg"
+            alt="Blackcood47"
+          />
           <div className="about-mark" aria-hidden="true">STI</div>
           <div className="about-eyebrow">À propos</div>
           <h1>About Blackcood47</h1>
           <p className="about-intro">
-            A student who created STI with the goal of helping students learn Sciences de l’Informatique more easily.
+            Blackcood47 is a student of Sciences de l’Informatique who created STI to make learning easier by organizing helpful resources in one place.
           </p>
           <div className="about-divider" />
           <p>
-            STI brings Bac Sciences de l’Informatique annexes and useful revision resources together in one place.
-          </p>
-          <p>
-            Its purpose is simple: make learning and revision easier, with a resource made by a student to help other students.
+            STI is a student project built for students, aiming to make study material easier to access and encourage more time learning and less time searching.
           </p>
           <Link to="/" className="about-home-button">Return to STI Learning <span aria-hidden="true">→</span></Link>
         </motion.section>

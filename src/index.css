@@ -597,12 +597,24 @@ code {
   outline: none;
 }
 
+.about-photo {
+  display: block;
+  width: 88px;
+  height: 88px;
+  margin: 48px 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32), 0 0 28px rgba(0, 229, 163, 0.08);
+}
+
 .about-mark {
   display: grid;
   place-items: center;
   width: 58px;
   height: 58px;
-  margin: 48px 0 22px;
+  margin: 0 0 22px;
   border: 1px solid rgba(0, 229, 163, 0.32);
   border-radius: 18px;
   background: rgba(0, 229, 163, 0.1);

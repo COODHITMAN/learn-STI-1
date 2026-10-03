@@ -59,7 +59,7 @@ export default function StudyPage({ accent, glow, badge, title, subtitle, toc, s
         ))}
         <PageNav prev={prev} next={next} />
       </main>
-      <footer className="site-footer">Created by Blackcood47</footer>
+      <footer className="site-footer"><Link to="/about" className="creator-link">Created by Blackcood47 <span aria-hidden="true">↗</span></Link></footer>
     </PageLayout>
   );
 }

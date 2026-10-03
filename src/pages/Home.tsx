@@ -40,7 +40,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="site-footer">Created by Blackcood47</footer>
+      <footer className="site-footer"><Link to="/about" className="creator-link">Created by Blackcood47 <span aria-hidden="true">↗</span></Link></footer>
     </PageLayout>
   );
 }

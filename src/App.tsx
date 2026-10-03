@@ -6,6 +6,7 @@ import CssPage from './pages/CssPage';
 import JsPage from './pages/JsPage';
 import SqlPage from './pages/SqlPage';
 import PhpPage from './pages/PhpPage';
+import AboutPage from './pages/AboutPage';
 import OrbBackground from './components/OrbBackground';
 
 function AnimatedRoutes() {
@@ -19,6 +20,7 @@ function AnimatedRoutes() {
         <Route path="/js" element={<JsPage />} />
         <Route path="/sql" element={<SqlPage />} />
         <Route path="/php" element={<PhpPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </AnimatePresence>
   );

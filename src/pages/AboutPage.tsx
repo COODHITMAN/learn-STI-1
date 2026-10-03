@@ -15,7 +15,7 @@ export default function AboutPage() {
           <Link to="/" className="about-back">← STI Learning</Link>
           <img
             className="about-photo"
-            src="public/799200068_1107396998468723_3468948674525301521_n.jpg"
+            src="./799200068_1107396998468723_3468948674525301521_n.jpg"
             alt="Blackcood47"
           />
           <div className="about-mark" aria-hidden="true">STI</div>

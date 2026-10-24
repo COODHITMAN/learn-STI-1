@@ -10,25 +10,38 @@ const subjects = [
   { path: '/php', name: 'PHP', label: 'Rappel', accent: '#c084fc', icon: 'PHP', description: 'Types, fonctions, MySQLi et CRUD.' },
 ];
 
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+const item = {
+  hidden: { opacity: 0, y: 24, scale: 0.96 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
 export default function Home() {
   return (
     <PageLayout accent="#00e5a3" glow="#00e5a344">
       <main className="home-page">
         <section className="hero-section">
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6 }}>
-            <div className="hero-kicker">Bac Sciences Informatiques</div>
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6, ease: [0.22, 1, 0.36, 1] as const }}>
+            <span className="hero-badge">
+              <span className="hero-badge-dot" />
+              Bac Sciences Informatiques
+            </span>
             <h1>STI <span>Learning</span></h1>
             <p>Toutes les annexes du programme<br />en un seul endroit.</p>
             <div className="hero-rule"><span /> Programme 2024–2025 <span /></div>
           </motion.div>
         </section>
-        <section className="subjects-section">
+        <motion.section className="subjects-section" variants={container} initial="hidden" animate="show">
           <div className="section-eyebrow">Choisir une matière</div>
           <div className="subject-grid">
-            {subjects.map((subject, index) => (
-              <motion.div key={subject.path} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .12 * index, duration: .45 }}>
+            {subjects.map((subject) => (
+              <motion.div key={subject.path} variants={item}>
                 <Link to={subject.path} className="subject-card" style={{ '--subject-accent': subject.accent } as React.CSSProperties}>
                   <div className="subject-glow" />
+                  <div className="subject-card-blur" />
                   <div className="subject-icon">{subject.icon}</div>
                   <div className="subject-meta">{subject.label}</div>
                   <h2>{subject.name}</h2>
@@ -38,7 +51,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
       </main>
       <footer className="site-footer"><Link to="/about" className="creator-link">Created by Blackcood47 <span aria-hidden="true">↗</span></Link></footer>
     </PageLayout>

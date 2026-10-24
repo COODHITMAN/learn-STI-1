@@ -24,14 +24,31 @@ export default function Home() {
     <PageLayout accent="#00e5a3" glow="#00e5a344">
       <main className="home-page">
         <section className="hero-section">
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6, ease: [0.22, 1, 0.36, 1] as const }}>
-            <span className="hero-badge">
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
+            }}
+          >
+            <motion.span
+              className="hero-badge"
+              variants={{ hidden: { opacity: 0, y: -16 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } } }}
+            >
               <span className="hero-badge-dot" />
               Bac Sciences Informatiques
-            </span>
-            <h1>STI <span>Learning</span></h1>
-            <p>Toutes les annexes du programme<br />en un seul endroit.</p>
-            <div className="hero-rule"><span /> Programme 2024–2025 <span /></div>
+            </motion.span>
+            <motion.h1
+              variants={{ hidden: { opacity: 0, y: 22, filter: 'blur(6px)' }, show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } } }}
+            >STI <span>Learning</span></motion.h1>
+            <motion.p
+              variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } } }}
+            >Toutes les annexes du programme<br />en un seul endroit.</motion.p>
+            <motion.div
+              className="hero-rule"
+              variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.5 } } }}
+            ><span /> Programme 2024–2025 <span /></motion.div>
           </motion.div>
         </section>
         <motion.section className="subjects-section" variants={container} initial="hidden" animate="show">

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 interface NavLink {
   to: string;
@@ -10,9 +11,20 @@ interface Props {
   next?: NavLink;
 }
 
+const navVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
 export default function PageNav({ prev, next }: Props) {
   return (
-    <nav className="page-nav">
+    <motion.nav
+      className="page-nav"
+      variants={navVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: '-40px' }}
+    >
       {prev ? (
         <Link to={prev.to} className="nav-btn">
           <span style={{ fontSize: '1.2rem' }}>&#8592;</span>
@@ -31,6 +43,6 @@ export default function PageNav({ prev, next }: Props) {
           <span style={{ fontSize: '1.2rem' }}>&#8594;</span>
         </Link>
       ) : <div />}
-    </nav>
+    </motion.nav>
   );
 }

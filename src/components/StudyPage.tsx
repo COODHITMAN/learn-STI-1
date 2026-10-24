@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageLayout from './PageLayout';
 import PageNav from './PageNav';
@@ -22,6 +23,11 @@ interface Props {
   prev?: { to: string; label: string };
   next?: { to: string; label: string };
 }
+
+const reveal = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const } },
+};
 
 export default function StudyPage({ accent, glow, badge, title, subtitle, toc, sections, prev, next }: Props) {
   const [activeSection, setActiveSection] = useState(toc[0]?.id ?? '');
@@ -48,12 +54,36 @@ export default function StudyPage({ accent, glow, badge, title, subtitle, toc, s
 
   return (
     <PageLayout accent={accent} glow={glow}>
-      <header className="subject-header" style={{ '--subject-accent': accent } as React.CSSProperties}>
+      <motion.header
+        className="subject-header"
+        style={{ '--subject-accent': accent } as React.CSSProperties}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      >
         <span className="subject-badge">{badge}</span>
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
-      </header>
-      <nav className="sticky-nav" aria-label="Sections du cours">
+        <motion.h1
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {title}
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          {subtitle}
+        </motion.p>
+      </motion.header>
+      <motion.nav
+        className="sticky-nav"
+        aria-label="Sections du cours"
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      >
         <Link to="/" className="nav-home-link">STI <span>⌂</span></Link>
         <span className="nav-separator" aria-hidden="true" />
         <div className="nav-sections">
@@ -71,12 +101,19 @@ export default function StudyPage({ accent, glow, badge, title, subtitle, toc, s
             </button>
           ))}
         </div>
-      </nav>
+      </motion.nav>
       <main className="page-container">
         {sections.map((section) => (
           <section key={section.id}>
             <SectionTitle num={section.icon} id={section.id}>{section.title}</SectionTitle>
-            {section.content}
+            <motion.div
+              variants={reveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-40px' }}
+            >
+              {section.content}
+            </motion.div>
           </section>
         ))}
         <PageNav prev={prev} next={next} />
